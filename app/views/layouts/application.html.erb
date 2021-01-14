@@ -10,6 +10,20 @@
   </head>
 
   <body>
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+    <nav>
+      <% if user_signed_in? %>
+        ユーザーネーム : <%= current_user.user_name %>さん
+      <% end %>
+    </nav>
     <%= yield %>
+      <% if user_signed_in? %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'サインアップ', new_user_registration_path %>または
+        <%= link_to 'ログイン', new_user_session_path %>
+      <% end %>
   </body>
 </html>

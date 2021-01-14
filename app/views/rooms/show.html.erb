@@ -1,7 +1,12 @@
 <h1>ちゃっとるーむ</h1>
+<p>※現在動作停止中</p>
 <div id="messages">
   <%= render @messages %>
 </div>
 
 <%= label_tag :content, 'チャットを入力:' %>
 <%= text_field_tag :content, nil, data: { behavior: 'room_speaker' } %>
+
+<%= link_to @room, method: :delete, data: { confirm: "削除しますか？" } do %>
+  <input type="button" class="btn-primary" value="削除">
+<% end %>

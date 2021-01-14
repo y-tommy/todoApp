@@ -1,0 +1,56 @@
+<div class="container-fluid">
+<div class="card">
+<header>
+  <div class="card-header bg-info">
+    <h1 class="text-center">Tasks</h1>
+  </div>
+</header>
+  <table class="table card-table">
+    <thead>
+      <tr class="row-auto">
+        <th>状態</th>
+        <th>期限</th>
+        <th>タイトル</th>
+        <th>説明</th>
+        <th><th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr class="row-auto clearfix table-primary">
+          <td><%= task.id %></td>
+          <% if task.target_at.blank? %>
+            <td>なし</td>
+          <% else %>
+            <td><%= task.target_at %></td>
+          <% end %>
+          <td><%= task.title %></td>
+          <td><%= task.description %></td>
+          <div class="col-3">
+          <td class="px-0 w-5">
+            <%= link_to task do %>
+              <i class="fas fa-search fa-1x"></i>
+            <% end %>
+          </td>
+          <td class="px-0 w-5">
+            <%= link_to edit_task_path(task) do %>
+              <i class="fas fa-pen"></i>
+            <% end %>
+          </td>
+          <td class="px-0 w-5">
+            <%= link_to task, method: :delete, data: { confirm: "タイトル:"+task.title+"を削除しますか？" } do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </td>
+          </div>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<br>
+
+<%= link_to 'ToDoの作成', new_task_path %>｜

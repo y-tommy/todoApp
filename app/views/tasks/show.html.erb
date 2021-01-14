@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p><%= @task.title %></p>
+<% if @task.target_at.blank? %>
+  <td>なし</td>
+<% else %>
+  <td><%= @task.target_at %></td>
+<% end %>
+<p><%= @task.description %></p>
+
+<%= link_to '編集', edit_task_path(@task) %> |
+<%= link_to '戻る', tasks_path %>

@@ -1,1 +1,13 @@
 @import '~bootstrap/scss/bootstrap';
+
+.notice {
+  background-color: green;
+  color: #white;
+  text-align: center;
+}
+
+.alert {
+  background-color: red;
+  color: #white;
+  text-align: center;
+}
